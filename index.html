@@ -1,0 +1,1278 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Ramseier Verlag – Digitale Präsenz für Schweizer Unternehmen</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+
+<style>
+  :root {
+    --ink: #0f0f0d;
+    --paper: #f5f0e8;
+    --gold: #c8963e;
+    --gold-light: #e8b566;
+    --muted: #6b6560;
+    --border: rgba(200,150,62,0.18);
+    --bg-dark: #13120e;
+    --bg-mid: #1c1b16;
+    --bg-card: #1e1d18;
+    --text-light: #e8e2d5;
+    --text-muted: #8c8780;
+  }
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'DM Sans', sans-serif;
+    background: var(--bg-dark);
+    color: var(--text-light);
+    font-size: 16px;
+    line-height: 1.7;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  /* ── NAV ── */
+  nav {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    z-index: 100;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 5vw;
+    height: 64px;
+    background: rgba(15,15,13,0.92);
+    backdrop-filter: blur(12px);
+    border-bottom: 0.5px solid var(--border);
+  }
+
+  .nav-logo {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.25rem;
+    font-weight: 500;
+    color: var(--text-light);
+    letter-spacing: 0.04em;
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+
+  .logo-mark {
+    width: 28px;
+    height: 28px;
+    border: 1.5px solid var(--gold);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.75rem;
+    font-weight: 600;
+    color: var(--gold);
+    letter-spacing: 0.02em;
+  }
+
+  .nav-links {
+    display: flex;
+    align-items: center;
+    gap: 2rem;
+    list-style: none;
+  }
+
+  .nav-links a {
+    font-size: 0.8125rem;
+    font-weight: 400;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: var(--text-muted);
+    text-decoration: none;
+    transition: color 0.2s;
+  }
+
+  .nav-links a:hover { color: var(--text-light); }
+
+  .nav-cta {
+    font-size: 0.8125rem !important;
+    color: var(--gold) !important;
+    border: 0.5px solid var(--gold) !important;
+    padding: 6px 16px !important;
+    transition: background 0.2s, color 0.2s !important;
+    letter-spacing: 0.04em !important;
+    text-transform: uppercase !important;
+  }
+
+  .nav-cta:hover {
+    background: var(--gold) !important;
+    color: var(--bg-dark) !important;
+  }
+
+  /* Hamburger */
+  .hamburger {
+    display: none;
+    flex-direction: column;
+    gap: 5px;
+    cursor: pointer;
+    background: none;
+    border: none;
+    padding: 4px;
+  }
+
+  .hamburger span {
+    display: block;
+    width: 22px;
+    height: 1.5px;
+    background: var(--text-light);
+    transition: transform 0.3s, opacity 0.3s;
+  }
+
+  .hamburger.open span:nth-child(1) { transform: rotate(45deg) translate(4px, 4.5px); }
+  .hamburger.open span:nth-child(2) { opacity: 0; }
+  .hamburger.open span:nth-child(3) { transform: rotate(-45deg) translate(4px, -4.5px); }
+
+  .mobile-menu {
+    display: none;
+    position: fixed;
+    top: 64px; left: 0; right: 0;
+    background: rgba(15,15,13,0.98);
+    border-bottom: 0.5px solid var(--border);
+    padding: 2rem 5vw;
+    flex-direction: column;
+    gap: 1.25rem;
+    z-index: 99;
+  }
+
+  .mobile-menu.open { display: flex; }
+  .mobile-menu a {
+    font-size: 1rem;
+    color: var(--text-muted);
+    text-decoration: none;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    font-size: 0.875rem;
+    transition: color 0.2s;
+  }
+  .mobile-menu a:hover { color: var(--text-light); }
+
+  /* ── HERO ── */
+  .hero {
+    padding-top: 64px;
+    min-height: 100vh;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    align-items: center;
+    gap: 0;
+    overflow: hidden;
+    position: relative;
+  }
+
+  .hero::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0; bottom: 0;
+    background: radial-gradient(ellipse 50% 60% at 65% 40%, rgba(200,150,62,0.06) 0%, transparent 70%);
+    pointer-events: none;
+  }
+
+  .hero-content {
+    padding: 8vw 5vw 8vw 8vw;
+    position: relative;
+    z-index: 1;
+  }
+
+  .hero-eyebrow {
+    font-size: 0.6875rem;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 2rem;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+
+  .hero-eyebrow::before {
+    content: '';
+    display: block;
+    width: 32px;
+    height: 0.5px;
+    background: var(--gold);
+  }
+
+  .hero-headline {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(2.8rem, 5vw, 4.5rem);
+    font-weight: 500;
+    line-height: 1.08;
+    color: var(--text-light);
+    margin-bottom: 2rem;
+  }
+
+  .hero-headline em {
+    font-style: italic;
+    color: var(--gold);
+  }
+
+  .hero-sub {
+    font-size: 1rem;
+    font-weight: 300;
+    color: var(--text-muted);
+    max-width: 440px;
+    line-height: 1.75;
+    margin-bottom: 3rem;
+  }
+
+  .hero-actions {
+    display: flex;
+    gap: 1rem;
+    flex-wrap: wrap;
+  }
+
+  .btn-primary {
+    display: inline-block;
+    background: var(--gold);
+    color: var(--bg-dark);
+    font-family: 'DM Sans', sans-serif;
+    font-size: 0.8125rem;
+    font-weight: 500;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    padding: 14px 32px;
+    text-decoration: none;
+    transition: background 0.2s, transform 0.15s;
+  }
+
+  .btn-primary:hover { background: var(--gold-light); transform: translateY(-1px); }
+
+  .btn-outline {
+    display: inline-block;
+    border: 0.5px solid rgba(200,150,62,0.4);
+    color: var(--text-light);
+    font-family: 'DM Sans', sans-serif;
+    font-size: 0.8125rem;
+    font-weight: 400;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    padding: 14px 32px;
+    text-decoration: none;
+    transition: border-color 0.2s, color 0.2s;
+  }
+
+  .btn-outline:hover { border-color: var(--gold); color: var(--gold); }
+
+  .hero-visual {
+    height: 100%;
+    min-height: 100vh;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: var(--bg-mid);
+    border-left: 0.5px solid var(--border);
+    overflow: hidden;
+  }
+
+  .hero-grid-bg {
+    position: absolute;
+    inset: 0;
+    background-image:
+      linear-gradient(rgba(200,150,62,0.05) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(200,150,62,0.05) 1px, transparent 1px);
+    background-size: 48px 48px;
+  }
+
+  .hero-stats {
+    position: relative;
+    z-index: 2;
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+    padding: 4vw;
+    width: 100%;
+  }
+
+  .stat-card {
+    background: rgba(200,150,62,0.05);
+    border: 0.5px solid var(--border);
+    padding: 1.5rem 2rem;
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-between;
+    gap: 1rem;
+    transition: background 0.2s;
+  }
+
+  .stat-card:hover { background: rgba(200,150,62,0.09); }
+
+  .stat-label {
+    font-size: 0.75rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--text-muted);
+  }
+
+  .stat-value {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 2.25rem;
+    font-weight: 500;
+    color: var(--gold-light);
+    line-height: 1;
+  }
+
+  /* ── SECTION STRUCTURE ── */
+  section { padding: 8rem 8vw; }
+
+  .section-tag {
+    font-size: 0.6875rem;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 1.25rem;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+
+  .section-tag::before {
+    content: '';
+    display: block;
+    width: 24px;
+    height: 0.5px;
+    background: var(--gold);
+  }
+
+  .section-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(2rem, 3.5vw, 3.25rem);
+    font-weight: 500;
+    line-height: 1.12;
+    color: var(--text-light);
+    margin-bottom: 1.5rem;
+  }
+
+  .section-title em { font-style: italic; color: var(--gold); }
+
+  .section-intro {
+    font-size: 1rem;
+    font-weight: 300;
+    color: var(--text-muted);
+    max-width: 560px;
+    line-height: 1.8;
+  }
+
+  /* ── HOW IT WORKS ── */
+  #wie-es-funktioniert {
+    background: var(--bg-mid);
+    border-top: 0.5px solid var(--border);
+    border-bottom: 0.5px solid var(--border);
+  }
+
+  .steps-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 1px;
+    margin-top: 4rem;
+    background: var(--border);
+    border: 0.5px solid var(--border);
+  }
+
+  .step {
+    background: var(--bg-mid);
+    padding: 2.5rem 2rem;
+    position: relative;
+    transition: background 0.2s;
+  }
+
+  .step:hover { background: var(--bg-card); }
+
+  .step-num {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 3.5rem;
+    font-weight: 400;
+    color: rgba(200,150,62,0.18);
+    line-height: 1;
+    margin-bottom: 1.25rem;
+    display: block;
+  }
+
+  .step h3 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.35rem;
+    font-weight: 500;
+    color: var(--text-light);
+    margin-bottom: 0.75rem;
+    line-height: 1.25;
+  }
+
+  .step p {
+    font-size: 0.875rem;
+    font-weight: 300;
+    color: var(--text-muted);
+    line-height: 1.75;
+  }
+
+  /* ── ANGEBOTE ── */
+  #angebote { background: var(--bg-dark); }
+
+  .packages-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    margin-bottom: 4rem;
+    gap: 2rem;
+    flex-wrap: wrap;
+  }
+
+  .packages-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: 1px;
+    background: var(--border);
+    border: 0.5px solid var(--border);
+  }
+
+  .package {
+    background: var(--bg-mid);
+    padding: 2.5rem 2rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+    transition: background 0.2s;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .package.featured {
+    background: var(--bg-card);
+  }
+
+  .package.featured::after {
+    content: 'Beliebt';
+    position: absolute;
+    top: 16px; right: -20px;
+    background: var(--gold);
+    color: var(--bg-dark);
+    font-size: 0.625rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    font-weight: 500;
+    padding: 4px 32px;
+    transform: rotate(35deg);
+  }
+
+  .package:hover { background: var(--bg-card); }
+
+  .package-freq {
+    font-size: 0.6875rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 1.25rem;
+  }
+
+  .package h3 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.75rem;
+    font-weight: 500;
+    color: var(--text-light);
+    margin-bottom: 0.25rem;
+    line-height: 1.1;
+  }
+
+  .package-tagline {
+    font-size: 0.8125rem;
+    color: var(--text-muted);
+    font-weight: 300;
+    margin-bottom: 2rem;
+  }
+
+  .package-price {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 2.75rem;
+    font-weight: 500;
+    color: var(--gold-light);
+    line-height: 1;
+    margin-bottom: 0.25rem;
+  }
+
+  .package-price-note {
+    font-size: 0.75rem;
+    color: var(--text-muted);
+    margin-bottom: 2rem;
+  }
+
+  .divider {
+    height: 0.5px;
+    background: var(--border);
+    margin-bottom: 2rem;
+  }
+
+  .feature-list {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+    flex: 1;
+    margin-bottom: 2rem;
+  }
+
+  .feature-list li {
+    font-size: 0.875rem;
+    font-weight: 300;
+    color: var(--text-muted);
+    display: flex;
+    gap: 10px;
+    align-items: flex-start;
+    line-height: 1.5;
+  }
+
+  .feature-list li::before {
+    content: '–';
+    color: var(--gold);
+    flex-shrink: 0;
+    margin-top: 1px;
+  }
+
+  .package-cta {
+    display: block;
+    text-align: center;
+    border: 0.5px solid rgba(200,150,62,0.3);
+    color: var(--text-light);
+    font-size: 0.75rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    padding: 12px;
+    text-decoration: none;
+    transition: background 0.2s, border-color 0.2s, color 0.2s;
+    margin-top: auto;
+  }
+
+  .package-cta:hover, .package.featured .package-cta {
+    background: var(--gold);
+    border-color: var(--gold);
+    color: var(--bg-dark);
+  }
+
+  .package.featured .package-cta:hover {
+    background: var(--gold-light);
+    border-color: var(--gold-light);
+  }
+
+  /* Extras */
+  .extras {
+    margin-top: 3rem;
+    padding: 2rem;
+    border: 0.5px solid var(--border);
+    background: var(--bg-mid);
+  }
+
+  .extras h4 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.1rem;
+    font-weight: 500;
+    color: var(--text-light);
+    margin-bottom: 1rem;
+  }
+
+  .extras-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 0.75rem;
+  }
+
+  .extra-item {
+    font-size: 0.8125rem;
+    color: var(--text-muted);
+    font-weight: 300;
+    display: flex;
+    gap: 8px;
+    align-items: flex-start;
+  }
+
+  .extra-item::before {
+    content: '+';
+    color: var(--gold);
+    font-weight: 500;
+    flex-shrink: 0;
+  }
+
+  /* ── TESTIMONIALS / WHY ── */
+  #vorteile {
+    background: var(--bg-mid);
+    border-top: 0.5px solid var(--border);
+    border-bottom: 0.5px solid var(--border);
+  }
+
+  .advantages-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 3rem;
+    margin-top: 4rem;
+  }
+
+  .advantage {
+    position: relative;
+    padding-left: 1.5rem;
+    border-left: 0.5px solid var(--border);
+    transition: border-color 0.2s;
+  }
+
+  .advantage:hover { border-left-color: var(--gold); }
+
+  .advantage h3 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.3rem;
+    font-weight: 500;
+    color: var(--text-light);
+    margin-bottom: 0.75rem;
+    line-height: 1.25;
+  }
+
+  .advantage p {
+    font-size: 0.875rem;
+    font-weight: 300;
+    color: var(--text-muted);
+    line-height: 1.8;
+  }
+
+  /* ── FORMULAR ── */
+  #formular {
+    background: var(--bg-dark);
+  }
+
+  .form-layout {
+    display: grid;
+    grid-template-columns: 1fr 1.2fr;
+    gap: 6vw;
+    align-items: start;
+    margin-top: 4rem;
+  }
+
+  .form-info h3 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.5rem;
+    font-weight: 500;
+    color: var(--text-light);
+    margin-bottom: 1rem;
+  }
+
+  .form-info p {
+    font-size: 0.875rem;
+    color: var(--text-muted);
+    font-weight: 300;
+    line-height: 1.8;
+    margin-bottom: 2rem;
+  }
+
+  .contact-list {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+  }
+
+  .contact-list li {
+    font-size: 0.875rem;
+    font-weight: 300;
+    color: var(--text-muted);
+    display: flex;
+    gap: 12px;
+    align-items: center;
+  }
+
+  .contact-list a {
+    color: var(--gold);
+    text-decoration: none;
+    transition: color 0.2s;
+  }
+
+  .contact-list a:hover { color: var(--gold-light); }
+
+  .contact-icon {
+    width: 20px;
+    color: var(--gold);
+    flex-shrink: 0;
+    opacity: 0.7;
+  }
+
+  form {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+  }
+
+  .form-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem;
+  }
+
+  .form-group {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+  }
+
+  label {
+    font-size: 0.6875rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--text-muted);
+  }
+
+  input, select, textarea {
+    background: var(--bg-mid);
+    border: 0.5px solid rgba(200,150,62,0.2);
+    color: var(--text-light);
+    font-family: 'DM Sans', sans-serif;
+    font-size: 0.9rem;
+    font-weight: 300;
+    padding: 12px 16px;
+    outline: none;
+    transition: border-color 0.2s;
+    width: 100%;
+    -webkit-appearance: none;
+    border-radius: 0;
+  }
+
+  input:focus, select:focus, textarea:focus {
+    border-color: var(--gold);
+  }
+
+  select { cursor: pointer; }
+
+  option { background: var(--bg-mid); }
+
+  textarea { resize: vertical; min-height: 120px; }
+
+  .form-submit {
+    margin-top: 0.5rem;
+  }
+
+  .form-submit button {
+    width: 100%;
+    background: var(--gold);
+    color: var(--bg-dark);
+    border: none;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 0.8125rem;
+    font-weight: 500;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    padding: 16px;
+    cursor: pointer;
+    transition: background 0.2s, transform 0.15s;
+  }
+
+  .form-submit button:hover { background: var(--gold-light); transform: translateY(-1px); }
+
+  .form-note {
+    font-size: 0.75rem;
+    color: var(--text-muted);
+    margin-top: 0.5rem;
+    font-weight: 300;
+  }
+
+  /* ── FOOTER ── */
+  footer {
+    background: var(--bg-mid);
+    border-top: 0.5px solid var(--border);
+    padding: 3rem 8vw;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 2rem;
+    flex-wrap: wrap;
+  }
+
+  .footer-logo {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.1rem;
+    font-weight: 500;
+    color: var(--text-light);
+    letter-spacing: 0.04em;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+
+  .footer-info {
+    font-size: 0.8125rem;
+    color: var(--text-muted);
+    font-weight: 300;
+  }
+
+  .footer-info a {
+    color: var(--gold);
+    text-decoration: none;
+  }
+
+  .footer-links {
+    display: flex;
+    gap: 1.5rem;
+    list-style: none;
+  }
+
+  .footer-links a {
+    font-size: 0.75rem;
+    color: var(--text-muted);
+    text-decoration: none;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    transition: color 0.2s;
+  }
+
+  .footer-links a:hover { color: var(--gold); }
+
+  /* ── ANIMATIONS ── */
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  .hero-content > * {
+    animation: fadeUp 0.7s ease both;
+  }
+
+  .hero-eyebrow { animation-delay: 0.1s; }
+  .hero-headline { animation-delay: 0.25s; }
+  .hero-sub { animation-delay: 0.4s; }
+  .hero-actions { animation-delay: 0.55s; }
+
+  /* ── RESPONSIVE ── */
+  @media (max-width: 900px) {
+    .hero {
+      grid-template-columns: 1fr;
+      min-height: auto;
+    }
+
+    .hero-visual {
+      min-height: 50vh;
+      border-left: none;
+      border-top: 0.5px solid var(--border);
+    }
+
+    .nav-links { display: none; }
+    .hamburger { display: flex; }
+
+    .form-layout { grid-template-columns: 1fr; }
+    .form-row { grid-template-columns: 1fr; }
+
+    footer {
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 1.5rem;
+    }
+  }
+
+  @media (max-width: 600px) {
+    section { padding: 5rem 6vw; }
+    .hero-content { padding: 6rem 6vw 4rem; }
+    .packages-header { flex-direction: column; }
+  }
+</style>
+</head>
+
+<body>
+
+<!-- ── NAV ── -->
+<nav>
+  <a href="#" class="nav-logo">
+    <span class="logo-mark">RV</span>
+    Ramseier Verlag
+  </a>
+
+  <ul class="nav-links">
+    <li><a href="#wie-es-funktioniert">Ablauf</a></li>
+    <li><a href="#angebote">Angebote</a></li>
+    <li><a href="#vorteile">Vorteile</a></li>
+    <li><a href="#formular" class="nav-cta">Anfrage</a></li>
+  </ul>
+
+  <button class="hamburger" id="hamburger" aria-label="Menü öffnen">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+
+<div class="mobile-menu" id="mobile-menu">
+  <a href="#wie-es-funktioniert">Ablauf</a>
+  <a href="#angebote">Angebote</a>
+  <a href="#vorteile">Vorteile</a>
+  <a href="#formular">Anfrage stellen</a>
+</div>
+
+<!-- ── HERO ── -->
+<section class="hero" id="hero">
+  <div class="hero-content">
+    <div class="hero-eyebrow">Digitale Präsenz · Schweizer Qualität</div>
+    <h1 class="hero-headline">
+      Ihr Unternehmen.<br>
+      <em>Doppelt</em> sichtbar<br>
+      im Netz.
+    </h1>
+    <p class="hero-sub">
+      Wir erstellen massgeschneiderte News-Websites für Schweizer Unternehmen –
+      als Ergänzung zu Ihrer Hauptseite. Mehr SEO-Sichtbarkeit, mehr Reichweite,
+      mehr Vertrauen. Als einfaches Monatsabo.
+    </p>
+    <div class="hero-actions">
+      <a href="#angebote" class="btn-primary">Pakete ansehen</a>
+      <a href="#wie-es-funktioniert" class="btn-outline">So funktioniert's</a>
+    </div>
+  </div>
+
+  <div class="hero-visual">
+    <div class="hero-grid-bg"></div>
+    <div class="hero-stats">
+      <div class="stat-card">
+        <div>
+          <div class="stat-label">Online-Präsenz</div>
+          <div style="font-size:0.75rem;font-weight:300;color:var(--text-muted);margin-top:2px">Durch zweite Domain verdoppelt</div>
+        </div>
+        <div class="stat-value">×2</div>
+      </div>
+      <div class="stat-card">
+        <div>
+          <div class="stat-label">SEO-Optimierung</div>
+          <div style="font-size:0.75rem;font-weight:300;color:var(--text-muted);margin-top:2px">Spezialisierte News-Domain</div>
+        </div>
+        <div class="stat-value">↑</div>
+      </div>
+      <div class="stat-card">
+        <div>
+          <div class="stat-label">Aufwand für Sie</div>
+          <div style="font-size:0.75rem;font-weight:300;color:var(--text-muted);margin-top:2px">Bilder & Stichworte, fertig</div>
+        </div>
+        <div class="stat-value">Min</div>
+      </div>
+      <div class="stat-card">
+        <div>
+          <div class="stat-label">Laufzeit</div>
+          <div style="font-size:0.75rem;font-weight:300;color:var(--text-muted);margin-top:2px">Monatlich kündbar</div>
+        </div>
+        <div class="stat-value">∞</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── WIE ES FUNKTIONIERT ── -->
+<section id="wie-es-funktioniert">
+  <div class="section-tag">Ablauf</div>
+  <h2 class="section-title">Einfach. <em>Schnell.</em> Automatisiert.</h2>
+  <p class="section-intro">
+    Sie liefern die Unterlagen – wir erledigen den Rest. Von der Erstellung bis zur
+    regelmässigen Aktualisierung läuft alles automatisiert und professionell ab.
+  </p>
+
+  <div class="steps-grid">
+    <div class="step">
+      <span class="step-num">01</span>
+      <h3>Domain & Einrichtung</h3>
+      <p>Wir registrieren Ihre News-Domain (z.B. <em>ihrfirma-news.ch</em>) und richten die Website innerhalb weniger Tage ein. Einmalige Einrichtungsgebühr, danach monatliches Abo.</p>
+    </div>
+    <div class="step">
+      <span class="step-num">02</span>
+      <h3>Reminder an Sie</h3>
+      <p>Je nach Update-Rhythmus erhalten Sie automatisch 2 Tage vor dem Publikationstermin eine E-Mail mit dem Formular und der Erinnerung, Bilder und Informationen einzureichen.</p>
+    </div>
+    <div class="step">
+      <span class="step-num">03</span>
+      <h3>Formular ausfüllen</h3>
+      <p>Sie füllen das kurze Online-Formular aus (Thema, Infos, Bilder) – das dauert meist unter 10 Minuten. Alles wird sicher an uns übermittelt.</p>
+    </div>
+    <div class="step">
+      <span class="step-num">04</span>
+      <h3>KI-gestützte Erstellung</h3>
+      <p>Ihre Angaben werden automatisch aufbereitet, der Artikel KI-gestützt formuliert, SEO-optimiert und auf Ihrer News-Website veröffentlicht.</p>
+    </div>
+    <div class="step">
+      <span class="step-num">05</span>
+      <h3>Bestätigung & Link</h3>
+      <p>Nach dem Update erhalten Sie automatisch eine Bestätigungs-E-Mail mit dem direkten Link zum neuen Artikel – zur Kontrolle und zum Teilen.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ── ANGEBOTE ── -->
+<section id="angebote">
+  <div class="packages-header">
+    <div>
+      <div class="section-tag">Preise & Pakete</div>
+      <h2 class="section-title">Ihr Rhythmus.<br><em>Ihr Preis.</em></h2>
+    </div>
+    <p style="max-width:340px;font-size:0.875rem;font-weight:300;color:var(--text-muted);line-height:1.8;">
+      Alle Pakete inkl. Erstellung der News-Website, Hosting-Koordination,
+      regelmässige Updates und automatischem Erinnerungssystem.
+    </p>
+  </div>
+
+  <div class="packages-grid">
+
+    <!-- 2-Monatlich -->
+    <div class="package">
+      <div class="package-freq">alle 2 Monate</div>
+      <h3>Basis</h3>
+      <p class="package-tagline">Für kleine Betriebe mit saisonalen Neuigkeiten</p>
+      <div class="package-price">CHF 299</div>
+      <div class="package-price-note">pro Monat · zzgl. Domain & Hosting</div>
+      <div class="divider"></div>
+      <ul class="feature-list">
+        <li>1 Artikel alle 2 Monate</li>
+        <li>SEO-optimierter Inhalt</li>
+        <li>Automatische Erinnerungs-E-Mail</li>
+        <li>Bestätigungs-E-Mail mit Link</li>
+        <li>Professionelles Layout</li>
+        <li>Monatlich kündbar</li>
+      </ul>
+      <a href="#formular" class="package-cta">Anfragen</a>
+    </div>
+
+    <!-- Monatlich -->
+    <div class="package">
+      <div class="package-freq">monatlich</div>
+      <h3>Standard</h3>
+      <p class="package-tagline">Ideal für KMU mit regelmässigen Projekten</p>
+      <div class="package-price">CHF 429</div>
+      <div class="package-price-note">pro Monat · zzgl. Domain & Hosting</div>
+      <div class="divider"></div>
+      <ul class="feature-list">
+        <li>1 Artikel pro Monat</li>
+        <li>SEO-optimierter Inhalt</li>
+        <li>Automatische Erinnerungs-E-Mail</li>
+        <li>Bestätigungs-E-Mail mit Link</li>
+        <li>Professionelles Layout + Bilder</li>
+        <li>Monatlich kündbar</li>
+      </ul>
+      <a href="#formular" class="package-cta">Anfragen</a>
+    </div>
+
+    <!-- Wöchentlich -->
+    <div class="package featured">
+      <div class="package-freq">wöchentlich</div>
+      <h3>Aktiv</h3>
+      <p class="package-tagline">Für Unternehmen mit viel zu erzählen</p>
+      <div class="package-price">CHF 699</div>
+      <div class="package-price-note">pro Monat · zzgl. Domain & Hosting</div>
+      <div class="divider"></div>
+      <ul class="feature-list">
+        <li>4 Artikel pro Monat</li>
+        <li>SEO-Analyse & Keyword-Planung</li>
+        <li>Automatisches Erinnerungssystem</li>
+        <li>Bestätigungs-E-Mail mit Link</li>
+        <li>Bildoptimierung & Alt-Texte</li>
+        <li>Monatsbericht (Traffic & Reichweite)</li>
+        <li>Prioritäts-Support</li>
+      </ul>
+      <a href="#formular" class="package-cta">Anfragen</a>
+    </div>
+
+    <!-- Täglich -->
+    <div class="package">
+      <div class="package-freq">täglich</div>
+      <h3>Premium</h3>
+      <p class="package-tagline">Maximale Sichtbarkeit, maximale Wirkung</p>
+      <div class="package-price">CHF 1'890</div>
+      <div class="package-price-note">pro Monat · zzgl. Domain & Hosting</div>
+      <div class="divider"></div>
+      <ul class="feature-list">
+        <li>Bis zu 22 Artikel pro Monat</li>
+        <li>SEO-Vollstrategie & Monitoring</li>
+        <li>Vollautomatisches Workflow-System</li>
+        <li>Bildgenerierung via KI inbegriffen</li>
+        <li>Social-Media-Snippets inklusive</li>
+        <li>Wöchentliches Reporting</li>
+        <li>Dedizierter Ansprechpartner</li>
+      </ul>
+      <a href="#formular" class="package-cta">Anfragen</a>
+    </div>
+
+  </div>
+
+  <!-- Extras -->
+  <div class="extras">
+    <h4>Zusatzleistungen</h4>
+    <div class="extras-grid">
+      <div class="extra-item">KI-Bildgenerierung ab CHF 25/Bild (wenn keine eigenen Bilder vorhanden)</div>
+      <div class="extra-item">Einmalige Website-Erstellung CHF 490 (einmalig, alle Pakete)</div>
+      <div class="extra-item">Domain-Registrierung .ch ab CHF 15/Jahr (direkt beim Kunden)</div>
+      <div class="extra-item">Hosting ab CHF 8/Monat (direkt beim Anbieter)</div>
+      <div class="extra-item">Übersetzung DE/FR/IT/EN auf Anfrage</div>
+      <div class="extra-item">Social-Media-Posting auf Anfrage</div>
+    </div>
+  </div>
+</section>
+
+<!-- ── VORTEILE ── -->
+<section id="vorteile">
+  <div class="section-tag">Warum Ramseier Verlag</div>
+  <h2 class="section-title">Ihr Vorteil im <em>digitalen Raum</em></h2>
+
+  <div class="advantages-grid">
+    <div class="advantage">
+      <h3>Doppelte Online-Präsenz</h3>
+      <p>Eine zweite Domain – z.B. ihrfirma-news.ch – belegt zusätzliche Plätze in Google-Suchergebnissen. Ihre Marke erscheint doppelt, Ihre Konkurrenz verdrängt.</p>
+    </div>
+    <div class="advantage">
+      <h3>SEO auf Autopilot</h3>
+      <p>News-Websites sind schlanker, schneller und für Google einfacher zu indexieren. Jeder neue Artikel ist frischer Content – der wichtigste SEO-Faktor überhaupt.</p>
+    </div>
+    <div class="advantage">
+      <h3>Kein Aufwand für Sie</h3>
+      <p>Sie liefern Fotos und ein paar Stichworte. Wir erledigen alles andere: Texte, Formatierung, SEO, Veröffentlichung. Ihr Zeitaufwand: unter 10 Minuten pro Artikel.</p>
+    </div>
+    <div class="advantage">
+      <h3>Vollautomatisch & pünktlich</h3>
+      <p>Erinnerungen, Formularverarbeitung, Veröffentlichung und Bestätigungen laufen automatisiert. Kein manuelles Nachfragen, keine Verzögerungen.</p>
+    </div>
+    <div class="advantage">
+      <h3>Transparente Kosten</h3>
+      <p>Feste Monatspauschalen, keine versteckten Stunden. Sie wissen immer, was Sie bezahlen – und können monatlich kündigen.</p>
+    </div>
+    <div class="advantage">
+      <h3>Schweizer Qualität</h3>
+      <p>Texte in Schweizer Hochdeutsch, rechtlich konform, auf Schweizer Hosting. Daten bleiben in der Schweiz. Persönliche Betreuung aus Lachen SZ.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ── FORMULAR ── -->
+<section id="formular">
+  <div class="section-tag">Kontakt</div>
+  <h2 class="section-title">Jetzt <em>anfragen</em></h2>
+  <p class="section-intro">
+    Kein Abo, keine Verpflichtung – einfach unverbindlich anfragen.
+    Wir melden uns innerhalb von 24 Stunden bei Ihnen.
+  </p>
+
+  <div class="form-layout">
+    <div class="form-info">
+      <h3>Ramseier Verlag</h3>
+      <p>
+        Digitale Lösungen für Schweizer Unternehmen. Persönliche Beratung,
+        automatisierte Prozesse, professionelle Resultate.
+      </p>
+      <ul class="contact-list">
+        <li>
+          <svg class="contact-icon" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5">
+            <path d="M2.5 6.5l7.5 5 7.5-5M3 4h14a1 1 0 011 1v10a1 1 0 01-1 1H3a1 1 0 01-1-1V5a1 1 0 011-1z"/>
+          </svg>
+          <a href="mailto:info@ramseierverlag.ch">info@ramseierverlag.ch</a>
+        </li>
+        <li>
+          <svg class="contact-icon" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5">
+            <circle cx="10" cy="10" r="7.5"/>
+            <path d="M10 2.5v7.5l4 2"/>
+          </svg>
+          Mo–Fr, 08:00–17:00 Uhr
+        </li>
+        <li>
+          <svg class="contact-icon" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5">
+            <path d="M10 2a6 6 0 016 6c0 4-6 10-6 10S4 12 4 8a6 6 0 016-6z"/>
+            <circle cx="10" cy="8" r="2"/>
+          </svg>
+          Lachen SZ, Schweiz
+        </li>
+        <li>
+          <svg class="contact-icon" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5">
+            <path d="M3 3h14v12a1 1 0 01-1 1H4a1 1 0 01-1-1V3z"/><path d="M3 7h14"/>
+          </svg>
+          <a href="https://www.ramseierverlag.ch" target="_blank">www.ramseierverlag.ch</a>
+        </li>
+      </ul>
+    </div>
+
+    <form action="mailto:info@ramseierverlag.ch" method="post" enctype="text/plain">
+      <div class="form-row">
+        <div class="form-group">
+          <label for="vorname">Vorname *</label>
+          <input type="text" id="vorname" name="vorname" placeholder="Max" required>
+        </div>
+        <div class="form-group">
+          <label for="nachname">Nachname *</label>
+          <input type="text" id="nachname" name="nachname" placeholder="Muster" required>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label for="firma">Firmenname</label>
+        <input type="text" id="firma" name="firma" placeholder="Muster AG">
+      </div>
+
+      <div class="form-row">
+        <div class="form-group">
+          <label for="email">E-Mail *</label>
+          <input type="email" id="email" name="email" placeholder="max@musterfirma.ch" required>
+        </div>
+        <div class="form-group">
+          <label for="website">Ihre aktuelle Website</label>
+          <input type="url" id="website" name="website" placeholder="https://ihrfirma.ch">
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label for="paket">Gewünschtes Paket</label>
+        <select id="paket" name="paket">
+          <option value="">Bitte wählen</option>
+          <option value="basis">Basis – alle 2 Monate (CHF 299/Monat)</option>
+          <option value="standard">Standard – monatlich (CHF 429/Monat)</option>
+          <option value="aktiv">Aktiv – wöchentlich (CHF 699/Monat)</option>
+          <option value="premium">Premium – täglich (CHF 1'890/Monat)</option>
+          <option value="beratung">Ich möchte zuerst beraten werden</option>
+        </select>
+      </div>
+
+      <div class="form-group">
+        <label for="nachricht">Beschreibung Ihres Unternehmens / Ihrer Ziele</label>
+        <textarea id="nachricht" name="nachricht" placeholder="Was macht Ihr Unternehmen? Welche Neuigkeiten würden Sie gerne regelmässig kommunizieren?"></textarea>
+      </div>
+
+      <div class="form-submit">
+        <button type="submit">Unverbindlich anfragen →</button>
+        <p class="form-note">* Pflichtfelder. Ihre Daten werden vertraulich behandelt und nicht an Dritte weitergegeben.</p>
+      </div>
+    </form>
+  </div>
+</section>
+
+<!-- ── FOOTER ── -->
+<footer>
+  <div class="footer-logo">
+    <span class="logo-mark">RV</span>
+    Ramseier Verlag
+  </div>
+  <div class="footer-info">
+    <a href="mailto:info@ramseierverlag.ch">info@ramseierverlag.ch</a> &nbsp;·&nbsp;
+    <a href="https://www.ramseierverlag.ch" target="_blank">www.ramseierverlag.ch</a> &nbsp;·&nbsp;
+    Lachen SZ, Schweiz
+  </div>
+  <ul class="footer-links">
+    <li><a href="#angebote">Angebote</a></li>
+    <li><a href="#formular">Kontakt</a></li>
+    <li><a href="#">Impressum</a></li>
+    <li><a href="#">Datenschutz</a></li>
+  </ul>
+</footer>
+
+<script>
+  const hamburger = document.getElementById('hamburger');
+  const mobileMenu = document.getElementById('mobile-menu');
+
+  hamburger.addEventListener('click', () => {
+    hamburger.classList.toggle('open');
+    mobileMenu.classList.toggle('open');
+  });
+
+  mobileMenu.querySelectorAll('a').forEach(a => {
+    a.addEventListener('click', () => {
+      hamburger.classList.remove('open');
+      mobileMenu.classList.remove('open');
+    });
+  });
+</script>
+
+</body>
+</html>
